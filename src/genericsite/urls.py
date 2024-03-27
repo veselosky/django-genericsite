@@ -13,19 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.urls import include, path
 from django.views.generic import RedirectView
 
 from genericsite import views as generic
 
 urlpatterns = [
-    path("tinymce/", include("tinymce.urls")),
-    path("accounts/profile/", generic.ProfileView.as_view(), name="account_profile"),
-    path(
-        "images/recent.json",
-        generic.TinyMCEImageListView.as_view(),
-        name="tinymce_image_list",
-    ),
     # Above pages are used for admin/publishing, not live site. These redirects are for
     # live site but cannot be statically generated. Users will have to deal with that.
     path(
